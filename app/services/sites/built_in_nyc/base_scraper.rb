@@ -64,7 +64,7 @@ module Sites
       def self.get_pagination_links
         @data = Nokogiri::HTML(@browser.html) 
         @page_number_idx = 0
-        byebug
+
         @page_links = @data.css(PAGINATION_CSS_TAG).css('a')[1..-2]
       end
 

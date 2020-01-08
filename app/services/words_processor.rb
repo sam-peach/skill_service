@@ -1,9 +1,8 @@
 class WordsProcessor
 
-  SKILLS = Hash[Skill.all.collect { |skill| [skill.name.upcase.to_sym, true]}]
+  SKILLS = {JAVA: true, PYHTON: true, C: true, JAVASCRIPT: true}
 
   def self.process(data:)
-    
     freq_table = {}
 
     data.each do |skill|
@@ -19,9 +18,11 @@ class WordsProcessor
   private 
 
   def self.save_occurrences(freq_table:)
-    skills = Skill.all
-    freq_table.each do |k, v|
-      skills.find_by(name: k).occurrences.create(data: v)
-    end
+    # skills = Skill.all
+    # freq_table.each do |k, v|
+    #   skills.find_by(name: k).occurrences.create(data: v)
+    # end
+
+    HTTParty.post('http://localhost:3000/microservices', query: { test: { table: freq_table } })
   end
 end
