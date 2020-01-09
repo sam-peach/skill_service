@@ -22,6 +22,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'httparty', '~> 0.13.7'
 
+gem "whenever"
+
 gem 'selenium-webdriver'
 gem 'chromedriver-helper'
 gem 'nokogiri', '~> 1.10', '<= 1.10.4'

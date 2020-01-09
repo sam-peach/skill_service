@@ -1,6 +1,33 @@
 class WordsProcessor
 
-  SKILLS = {JAVA: true, PYHTON: true, C: true, JAVASCRIPT: true}
+  SKILLS = { 
+    :ANGULAR=>true,
+    :BOOTSTRAP=>true,
+    :JQUERY=>true,
+    :REACT=>true,
+    :JAVASCRIPT=>true,
+    :POSTGRESQL=>true,
+    :MYSQL=>true,
+    :NOSQL=>true,
+    :PHP=>true,
+    :PYTHON=>true,
+    :RUBY=>true,
+    :RAILS=>true,
+    :JAVA=>true,
+    :"C#"=>true,
+    :C=>true,
+    :PERL=>true,
+    :SCALA=>true,
+    :NODE=>true,
+    :DOCKER=>true,
+    :MONGODB=>true,
+    :AWS=>true,
+    :LINUX=>true,
+    :AZURE=>true,
+    :IOS=>true,
+    :KUBERNETES=>true,
+    :"C++"=>true
+   }
 
   def self.process(data:)
     freq_table = {}
