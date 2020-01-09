@@ -5,8 +5,6 @@ class ScraperProcessor
 
     scraper = "Sites::#{site.titleize.gsub(/\s/, "")}::Scraper".constantize
     scraper.scrape
-    scraper.instance_variables.each { |x| scraper.scraper.instance_variables(x) }
-    GC.start
   end
 
   def self.start_browser_and_got_to_page(url:)

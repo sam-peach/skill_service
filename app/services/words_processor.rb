@@ -45,11 +45,10 @@ class WordsProcessor
   private 
 
   def self.save_occurrences(freq_table:)
-    # skills = Skill.all
-    # freq_table.each do |k, v|
-    #   skills.find_by(name: k).occurrences.create(data: v)
-    # end
-
-    HTTParty.post('http://localhost:3000/microservices', query: { test: { table: freq_table } })
+    if Rails.env.production?
+      HTTParty.post('https://warm-meadow-80441.herokuapp.com//microservices', query: { skills: freq_table })
+    else
+      HTTParty.post('http://localhost:3000/microservices', query: { skills: freq_table })
+    end
   end
 end
