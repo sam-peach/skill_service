@@ -1,7 +1,7 @@
 module Sites
   module Indeed
     class BaseScraper < ScraperProcessor
-      SITE_URL          = "https://www.indeed.com/jobs?q=software+engineer&l=New+York%2C+NY"
+      SITE_URL           = "https://www.indeed.com/jobs?q=software+engineer&l=New+York%2C+NY"
       JOB_TTILE_CSS_TAG  = ".title"
       BODY_TEXT_CSS_TAG  = "#jobDescriptionText"
       PAGINATION_CSS_TAG = ".pagination"
@@ -26,7 +26,16 @@ module Sites
         
         puts "==========================="
         puts "SCRAPE COMPLETE"
-        puts "SENDING TO WORDS PROCESSOR"
+        puts "==========================="
+
+        puts "==========================="
+        puts "CLOSING BROWSER"
+        puts "==========================="
+
+        close_browser
+
+        puts "==========================="
+        puts "SENDING TO WORD PROCESSOR"
         puts "==========================="
 
         WordsProcessor.process(data: @payload)

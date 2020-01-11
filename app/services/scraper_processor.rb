@@ -13,6 +13,10 @@ class ScraperProcessor
     sleep 1
   end
 
+  def close_browser
+    @browser.close
+  end 
+
   def self.log
     puts "================================"
     puts "PREPARING TO SCRAPE #{self.name.upcase.split("::")[1]}"

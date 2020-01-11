@@ -22,7 +22,16 @@ module Sites
         
         puts "==========================="
         puts "SCRAPE COMPLETE"
-        puts "SENDING TO WORDS PROCESSOR"
+        puts "==========================="
+
+        puts "==========================="
+        puts "CLOSING BROWSER"
+        puts "==========================="
+
+        close_browser
+
+        puts "==========================="
+        puts "SENDING TO WORD PROCESSOR"
         puts "==========================="
 
         WordsProcessor.process(data: @payload)

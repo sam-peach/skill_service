@@ -45,10 +45,6 @@ class WordsProcessor
   private 
 
   def self.save_occurrences(freq_table:)
-    if Rails.env.production?
-      HTTParty.post('https://warm-meadow-80441.herokuapp.com//microservices', query: { skills: freq_table })
-    else
-      HTTParty.post('http://localhost:3000/microservices', query: { skills: freq_table })
-    end
+      HTTParty.post(ENV["MONOLITH_URL"], query: { skills: freq_table })
   end
 end
