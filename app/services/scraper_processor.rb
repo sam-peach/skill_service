@@ -13,7 +13,7 @@ class ScraperProcessor
     sleep 1
   end
 
-  def close_browser
+  def self.close_browser
     @browser.close
   end 
 
