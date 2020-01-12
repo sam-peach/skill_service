@@ -24,6 +24,8 @@ gem 'httparty', '~> 0.13.7'
 
 gem "whenever"
 
+gem 'figaro'
+
 gem 'selenium-webdriver'
 gem 'chromedriver-helper'
 gem 'nokogiri', '~> 1.10', '<= 1.10.4'

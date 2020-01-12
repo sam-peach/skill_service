@@ -45,6 +45,9 @@ class WordsProcessor
   private 
 
   def self.save_occurrences(freq_table:)
-      HTTParty.post(ENV["MONOLITH_URL"], query: { skills: freq_table })
+      HTTParty.post(
+        ENV['MONOLITH_URL'], 
+        headers: {"X-HTTP-AUTHORIZATION": ENV['HTTP_AUTH']}, 
+        query: { skills: freq_table })
   end
 end
