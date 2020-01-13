@@ -30,11 +30,15 @@ module V1
 
     def collect_data
       self.class::PAGE_DEPTH.times do
+        pre_page_collect if self.respond_to?(:pre_page_collect, true)
+
         @payload.push(*interate_though_links(links: job_title_links))
+
         go_to_next_page
+
         sleep 1
       end
-      @payload
+      @payload.uniq
     end
 
     def close_browser

@@ -33,6 +33,19 @@ module V1
         .click(:command)
     end
 
+    def pre_page_collect
+      buttons = @browser.divs(class: "load-button")
+      while buttons.present?
+        begin
+          buttons.each do |div|
+            div.wait_until(timeout: 3, &:present?).click!
+          end
+        rescue => e
+          break
+        end
+      end
+    end
+
     def go_to_next_page
       @browser.a(title: PAGINATION_TITLE)
         .wait_until(timeout: 3, &:present?)
