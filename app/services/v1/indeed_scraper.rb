@@ -23,8 +23,6 @@
         .span(class: PAGINATION_CLASS)
         .wait_until(timeout: 3, &:present?)
         .click!
-        
-      sleep 1
     end
   end
 end

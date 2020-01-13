@@ -5,7 +5,7 @@ module V1
     SITE_URL         = "https://www.builtinnyc.com/jobs"
     JOB_TTILE_CSS    = "h2[class*='title']"
     BODY_TEXT_CSS    = "div[class*='job-description']"
-    PAGINATION_TITLE = "Go to next page'"
+    PAGINATION_TITLE = "Go to next page"
     PAGINATION_CSS   = "a[title='#{PAGINATION_TITLE}']"
     PAGE_DEPTH       = 1
 
@@ -37,8 +37,6 @@ module V1
       @browser.a(title: PAGINATION_TITLE)
         .wait_until(timeout: 3, &:present?)
         .click!
-
-      sleep 1
     end
   end
 end

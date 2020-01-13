@@ -30,8 +30,9 @@ module V1
 
     def collect_data
       self.class::PAGE_DEPTH.times do
-        go_to_next_page
         @payload.push(*interate_though_links(links: job_title_links))
+        go_to_next_page
+        sleep 1
       end
       @payload
     end

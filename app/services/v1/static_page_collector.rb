@@ -10,11 +10,6 @@
       Nokogiri::HTML(@browser.html).css(self.class::JOB_TTILE_CSS)
     end
 
-    # def go_to_next_page
-    #   @browser.span(class: "np").wait_until(timeout: 3, &:present?).click!
-    #   sleep 1
-    # end
-
     def interate_though_links(links:)
       @word_list = []
 
