@@ -1,7 +1,7 @@
 module Sites
   module BuiltInNyc
     class BaseScraper < ScraperProcessor
-      SITE_URL          = "https://www.builtinnyc.com/jobs"
+      SITE_URL           = "https://www.builtinnyc.com/jobs"
       JOB_TTILE_CSS_TAG  = ".title"
       BODY_TEXT_CSS_TAG  = ".job-description"
       PAGINATION_CSS_TAG = ".pager__item"
