@@ -20,7 +20,7 @@ module V1
       close_browser
 
       puts "====> SENDING TO WORD PROCESSOR"
-      @word_processor.new(@payload.uniq).process
+      @word_processor.new(@payload).process
     end
 
     private
