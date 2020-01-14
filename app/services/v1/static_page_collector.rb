@@ -41,13 +41,10 @@
     end
 
     def recurse_and_push(node)
-      if node.children.present?
-        node.children.each do |child|
-          recurse_and_push(child)
-        end
+      node.xpath('.//text() | text()').each do |text_block|
+        puts "## #{text_block.text.gsub(/[^\+#\w ]/, " ").split(" ").uniq}"
+        @word_list.push(*text_block.text.gsub(/[^\+#\w ]/, " ").split(" ").uniq)
       end
-
-      @word_list.push(*node.text.gsub(/[^\+#\w ]/, " ").split(" ").uniq)
     end
   end
 end
