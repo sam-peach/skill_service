@@ -3,6 +3,7 @@ module V1
     def initialize
       @browser = Watir::Browser.new(:chrome, headless: true)
       @payload = []
+      @word_processor = V1::WordProcessor
     end
 
     def scrape
@@ -14,11 +15,12 @@ module V1
 
       pre_collect if self.respond_to?(:pre_collect, true)
 
-      data = collect_data
+      collect_data
 
       close_browser
 
-      data
+      puts "====> SENDING TO WORD PROCESSOR"
+      @word_processor.new(@payload.uniq).process
     end
 
     private
@@ -38,7 +40,6 @@ module V1
 
         sleep 1
       end
-      @payload.uniq
     end
 
     def close_browser

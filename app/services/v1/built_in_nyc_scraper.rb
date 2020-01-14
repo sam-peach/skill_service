@@ -19,7 +19,7 @@ module V1
       @browser
         .link("data-facet-alias".to_sym => "job-category_developer-engineer")
         .wait_until(timeout: 3, &:present?)
-        .click
+        .click!
 
       sleep 2
     end
@@ -29,20 +29,15 @@ module V1
     def open_job(link_tag)
       @browser
         .h2(text: link_tag.text.strip)
-        .wait_until(timeout: 4, &:present?)
+        .wait_until(timeout: 3, &:present?)
         .click(:command)
     end
 
     def pre_page_collect
-      buttons = @browser.divs(class: "load-button")
-      while buttons.present?
-        begin
-          buttons.each do |div|
-            div.wait_until(timeout: 3, &:present?).click!
-          end
-        rescue => e
-          break
-        end
+      hidden_links = @browser.divs(class: "hide")
+
+      hidden_links.each do |div|
+        @browser.execute_script('arguments[0].classList.remove("hide");', div)
       end
     end
 
