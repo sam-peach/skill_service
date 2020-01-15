@@ -24,7 +24,6 @@
           @browser.windows.last.use
 
           job_text_body = Nokogiri::HTML(@browser.html).css(self.class::BODY_TEXT_CSS) 
-
           recurse_and_push(job_text_body)
 
           @browser.windows.last.close if @browser.windows.count > 1
