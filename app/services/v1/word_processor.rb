@@ -26,7 +26,8 @@ module V1
       "AZURE"=>true,
       "IOS"=>true,
       "KUBERNETES"=>true,
-      "C++"=>true
+      "C++"=>true,
+      "TYPESCRIPT"=>true
       }
 
     def initialize(data)
