@@ -7,7 +7,7 @@
     BODY_TEXT_CSS    = "div[id*='jobDescriptionText']"
     PAGINATION_CLASS = "np"
     PAGINATION_CSS   = "span[class='#{PAGINATION_CLASS}']"
-    PAGE_DEPTH       = 7
+    PAGE_DEPTH       = 10
 
     private 
   

@@ -11,12 +11,11 @@ module V1
   
     def process
       freq_table = {}
-  
-      @data.each do |skill|
-        upcase_skill = skill.strip.upcase.to_s
-        if SKILLS[upcase_skill]
-          freq_table[upcase_skill] = 0 if freq_table[upcase_skill].blank?
-          freq_table[upcase_skill] = freq_table[upcase_skill] += 1
+
+      SKILLS.each do |skill|
+        if @data.scan(/#{skill}($|[ ,\/.:-;_])/m).size > 0
+          freq_table[skill] = 0 if freq_table[skill].blank?
+          freq_table[skill] = freq_table[skill] += 1
         end
       end
     
@@ -26,6 +25,8 @@ module V1
     private 
   
     def do_callback(freq_table:)
+      return if freq_table == "{}"
+
       puts "====> SENDING TO MONOLITH"
 
       HTTParty.post(

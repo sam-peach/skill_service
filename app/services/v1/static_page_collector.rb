@@ -11,12 +11,13 @@
     end
 
     def interate_though_links(links:)
-      @word_list = []
-
       links.each do |link_tag|
-        puts "> SCRAPING #{link_tag.text.strip}"
+        @word_list = ""
+
+        title = link_tag.text.strip
+        puts "> SCRAPING #{title}"
         begin
-          split_and_push(text: link_tag.text)
+          @word_list << title.upcase + " "
 
           open_job(link_tag)
           sleep 1
@@ -24,25 +25,17 @@
           @browser.windows.last.use
 
           job_text_body = Nokogiri::HTML(@browser.html).css(self.class::BODY_TEXT_CSS) 
-          recurse_and_push(job_text_body)
+          job_text_body.xpath('.//text() | text()').each do |text_block|
+            @word_list << text_block.text.upcase + " "
+          end
 
           @browser.windows.last.close if @browser.windows.count > 1
+
+          @word_processor.new(@word_list).process if @word_list.present?
         rescue => e
           puts ">>>> #{e}"
           next
         end
-      end
-      @word_list.uniq
-    end
-
-    def split_and_push(text:)
-      @payload.push(*text.gsub(/[^\+#\w ]/, " ").split(" "))
-    end
-
-    def recurse_and_push(node)
-      node.xpath('.//text() | text()').each do |text_block|
-        puts "## #{text_block.text.gsub(/[^\+#\w ]/, " ").split(" ").uniq}"
-        @word_list.push(*text_block.text.gsub(/[^\+#\w ]/, " ").split(" ").uniq)
       end
     end
   end

@@ -19,8 +19,7 @@ module V1
 
       close_browser
 
-      puts "====> SENDING TO WORD PROCESSOR"
-      @word_processor.new(@payload).process
+      puts "**ENDING SCRAPE"
     end
 
     private
@@ -33,8 +32,8 @@ module V1
     def collect_data
       self.class::PAGE_DEPTH.times do
         pre_page_collect if self.respond_to?(:pre_page_collect, true)
-
-        @payload.push(*interate_though_links(links: job_title_links))
+        
+        interate_though_links(links: job_title_links)
 
         go_to_next_page
 
