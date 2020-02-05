@@ -1,34 +1,9 @@
 module V1
   class WordProcessor
-    SKILLS = { 
-      "ANGULAR"=>true,
-      "BOOTSTRAP"=>true,
-      "JQUERY"=>true,
-      "REACT"=>true,
-      "JAVASCRIPT"=>true,
-      "POSTGRESQL"=>true,
-      "MYSQL"=>true,
-      "NOSQL"=>true,
-      "PHP"=>true,
-      "PYTHON"=>true,
-      "RUBY"=>true,
-      "RAILS"=>true,
-      "JAVA"=>true,
-      "C#"=>true,
-      "C"=>true,
-      "PERL"=>true,
-      "SCALA"=>true,
-      "NODE"=>true,
-      "DOCKER"=>true,
-      "MONGODB"=>true,
-      "AWS"=>true,
-      "LINUX"=>true,
-      "AZURE"=>true,
-      "IOS"=>true,
-      "KUBERNETES"=>true,
-      "C++"=>true,
-      "TYPESCRIPT"=>true
-      }
+    SKILLS = HTTParty.get(
+      ENV['MONOLITH_SKILLS'], 
+      headers: {"X-HTTP-AUTHORIZATION": ENV['HTTP_AUTH']} 
+    )
 
     def initialize(data)
       @data = data
