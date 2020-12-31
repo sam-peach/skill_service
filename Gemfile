@@ -28,7 +28,7 @@ gem 'figaro'
 
 gem 'selenium-webdriver'
 gem 'chromedriver-helper'
-gem 'nokogiri', '~> 1.10', '<= 1.10.4'
+gem 'nokogiri', '~> 1.10'
 gem 'watir'
 
 gem "puma_worker_killer"
